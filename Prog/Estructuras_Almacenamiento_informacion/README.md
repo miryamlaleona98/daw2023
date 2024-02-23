@@ -47,7 +47,7 @@ Retorna el carácter ubicado en la posición pasada por parámetro. Las posicion
 
 Permite extraer una subcadena.
 
-<img src="images/subString_begin_end.png"  width="250" height="100">
+<img src="daw2023/Prog/Estructuras_Almacenamiento_informacion/images/subString_begin_end.png"  width="250" height="100">
 
 
 **_String subcad (int beginIndex)_**

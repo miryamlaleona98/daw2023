@@ -47,7 +47,7 @@ Retorna el carácter ubicado en la posición pasada por parámetro. Las posicion
 
 Permite extraer una subcadena.
 
-<img src="daw2023/Prog/Estructuras_Almacenamiento_informacion/images/subString_begin_end.png"  width="250" height="100">
+<img src="/Volumes/Extreme SSD/MacDown/Programación/Estructuras de almacenamiento/Teoria/subString_begin_end.png"  width="250" height="100">
 
 
 **_String subcad (int beginIndex)_**
@@ -146,6 +146,121 @@ Los arrays permiten almacenar una colección de objetos o datos del mismo tipo.
 `n = new int[10] //Creación del array reservando para el un espacio en memoria nombre=new tipo[dimension]`
 `int[] m = new int[10] // declaración y creacion en un mismo lugar`
 
+### Arrays unidimensionales
+Existen tres ámbitos de uso importante de los arrays:
 
+**1. Modificación de una posición del array**
+
+Se especifica entre corchetes la posición a modificar después del nombre del array
+`int[] Numeros=new int[3]; // Array de 3 números (posiciones del 0 al 2).`
+`Numeros[0]=99; // Primera posición del array.`
+`Numeros[1]=120; // Segunda posición del array.`
+`Numeros[2]=33; // Tercera y última posición del array.`
+
+**2. Acceso a una posición del array**
+Acceder a un dato ya existente dentro del array, indicando la ubicación exacta y array.
+`int suma=Numeros[0] + Numeros[1] + Numeros[2];`
+
+> Los arrays, como objetos que son en Java, disponen de una propiedad pública denominada length, la cual nos permite conocer su tamaño. `System.out.println("Longitud del array: "+Numeros.length); `
+
+**3. Paso de parámetros**
+Para pasar como argumento un array a una función o método, esta debe tener en su definición un parámetro declarado como array.
+
+	int sumaarray (int[] j) {
+		int suma=0;
+
+        for (int i=0; i<j.length;i++)
+
+            suma=suma+j[i];
+
+        return suma;
+       } 
+
+En este método se pasa como argumento un array númerico, sobre el cual se calcula la suma de todos los números que contiene. 
+
+**_CUIDADO:_** En java las variables se pasan por copia a los métodos, es decir, cuando se pasa una variable a un método, y se realiza una modificación de su valor en dicho método, el valor de la variable en el método desde el que se ha realizado la invocación no se modifica. Pero esto no pasa con los arrays. Cuando se modifica el valor de uno de los elementos del array, si que cambia su valor de forma definitiva. 
+public static void main(String[] args) {
+
+     int j=0; int[] i=new int(1);  i[0]=0;
+
+     modificaArray(j,i); 
+
+     System.out.println(j+"-"+i[0]);  /* Mostrará por pantalla "0–1", puesto que el contenido del array es   
+
+          modificado en la función, y aunque la variable j también se modifica, se modifica una copia de la misma,
+
+          dejando el original intacto */ } 
+
+	int modificaArray(int j, int[] i); {
+
+     j++; int[0]++;  /* Modificación de los valores de la variable, solo afectará al array, no a j */}
+
+#### Inicialización de arrays
+
+Es habitual crear un array a través de un método que lo cree y rellene: 
+
+	static int[] ArrayConNumerosConsecutivos (int totalNumeros) {
+
+        int[] r=new int[totalNumeros];
+
+        for (int i=0;i<totalNumeros;i++) r[i]=i;
+
+        return r; }
+En caso de conocer las series que conformaran el array: 
+	`int[] array = {10, 20, 30};`
+
+	String[] diassemana= {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
+	
+Cuando se trata de un array de objetos, se ha de tener en cuenta que, el valor inicial de los elementos del array de objetos será null. En otras palabras, crear un array de objetos no significa que se han creado las instancias de los objetos. Hay que crear, para cada poisición del array, el objeto del tipo correspondiente con el operador new. 
+`StringBuilder[] j=new StringBuilderStringBuilder[10];`
+`for (int i=0; i<j.length;i++) System.out.println("Valor" +i + "="+j[i]); // Imprimirá null para los 10 valores.`
+
+Para solucionar este problema podemos optar por lo siguiente, crear para cada posición del array una instancia del objeto:
+`StringBuilder[] j=new StringBuilder[10];`
+`for (int i=0; i<j.length;i++) j[i]=new StringBuilder("cadena "+i);`
+
+### Arrays multidimensionales
+`int[][] a2d=new int[4][5];`
+> tipo [][] nombre = new tipo[filas][columnas];
+
+Para asignar un valor a una posición concreta de la matriz multidimensional simplemente debemos poner su nombre y posición: `a2d[0][0]=3;`
+`int suma=a2d[0][0]+a2d[0][1]+a2d[0][2]+a2d[0][3]+a2d[0][4];`
+
+Los arrays multidimensionales también pueden ser utilizados como parámetro en los métodos:
+
+	static int sumaarray2d(int[][] a2d) {
+
+        int suma = 0;
+
+        for (int i1 = 0; i1 < a2d.length; i1++) 
+
+            for (int i2 = 0; i2 < a2d[i1].length; i2++)  suma += a2d[i1][i2];
+
+        return suma;
+    }
+    
+[Ejercicios arrays multidimensionales](https://www.tutorialesprogramacionya.com/javaya/detalleconcepto.php?codigo=98&punto=&inicio=20)
+
+#### Inicialización de arrays multidimensionales
+
+	int[][] inicializarArray (int n, int m)
+
+	{
+
+     int[][] ret=new int[n][m];
+
+     for (int i=0;i<n;i++)
+
+          for (int j=0;j<m;j++)
+
+               ret[i][j]=n*m;
+
+     return ret;
+
+	}
+	
+	int[][] a2d={{0,1,2},{3,4,5},{6,7,8},{9,10,11}};
+
+	int[][][] a3d={{{0,1},{2,3}},{{0,1},{2,3}}};
 
 
